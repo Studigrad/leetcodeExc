@@ -1,0 +1,46 @@
+class Solution {
+    public int majorityElement(int[] nums) {
+        int element = 0;
+        int[] count = new int[nums.length];
+        int sum = 0;
+        int i=0;
+        while(true){
+            if(nums[element]==nums[i]){
+                sum++;
+                count[element] = sum;
+            }
+            if(i==nums.length-1){
+                element++;
+                i=0;
+                sum=0;
+            }
+            if(element==nums.length){
+                break;
+            }
+            i++;
+        }
+        // for(int q=0;q<count.length;q++){
+        //     System.out.print(count[q]+" ");
+        // }
+        int max = count[0];
+        int el = 0;
+        for(int j=0;j<count.length;j++){
+            if(count[j]>max){
+                max = count[j];
+                el = j;
+            }
+        }
+
+        return nums[el];  
+     }
+       
+}
+
+
+class Solution {
+    public int majorityElement(int[] nums) {
+        Arrays.sort(nums); 
+        int n = nums.length;
+        return nums[n/2];
+    }
+}
